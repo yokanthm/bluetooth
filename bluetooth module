@@ -1,0 +1,19 @@
+char data = 0;
+
+void setup() {
+  Serial.begin(9600);         // Start Serial communication
+  pinMode(8, OUTPUT);         // Output pin to Relay or LED
+  digitalWrite(8, LOW);       // Initially OFF
+}
+
+void loop() {
+  if (Serial.available()) {
+    data = Serial.read();     // Read input from Serial
+    if (data == '1') {
+      digitalWrite(8, HIGH);  // Turn ON
+    }
+    else if (data == '0') {
+      digitalWrite(8, LOW);   // Turn OFF
+    }
+  }
+}
